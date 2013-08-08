@@ -1,8 +1,16 @@
-unless defined?(Motion::Project::Config)
-  raise "This file must be required within a RubyMotion project Rakefile."
+
+
+class RMAssets 
+
+  def initialize
+  end
+
+  def lib_dir_path
+    File.dirname(File.expand_path(__FILE__))
+  end
+
+  def unused
+    print `sh /#{lib_dir_path}/../rm_asset_cleaner`
+  end
 end
 
-lib_dir_path = File.dirname(File.expand_path(__FILE__))
-Motion::Project::App.setup do |app|
-  app.files.unshift(Dir.glob(File.join(lib_dir_path, "project/**/*.rb")))
-end
