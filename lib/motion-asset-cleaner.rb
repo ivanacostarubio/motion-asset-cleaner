@@ -1,4 +1,10 @@
 
+namespace 'resources' do
+  desc "List unused resources"
+  task :unused do
+    RMAssets.new.unused
+  end
+end
 
 class RMAssets 
 
