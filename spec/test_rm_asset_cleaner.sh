@@ -37,12 +37,21 @@ it_detects_the_splash_image(){
     echo 
 }
 
+it_supports_interface_builder_files(){
+    # TODO
+    echo 
+}
+
+it_supports_the_icons_files(){
+    # TODO
+    echo 
+}
+
 suite(){
     for test_name in `grep '^it' $0 | cut -d '(' -f 1`; do 
         suite_addTest $test_name
     done
 }
-
 
 . "./spec/shunit2-2.1.6/src/shunit2"
 
