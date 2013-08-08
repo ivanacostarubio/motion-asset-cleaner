@@ -1,11 +1,4 @@
 
-namespace 'resources' do
-  desc "List unused resources"
-  task :unused do
-    RMAssets.new.unused
-  end
-end
-
 class RMAssets 
 
   def initialize
@@ -19,4 +12,12 @@ class RMAssets
     print `sh /#{lib_dir_path}/../rm_asset_cleaner`
   end
 end
+
+namespace 'resources' do
+  desc "List unused resources"
+  task :unused do
+    RMAssets.new.unused
+  end
+end
+
 
