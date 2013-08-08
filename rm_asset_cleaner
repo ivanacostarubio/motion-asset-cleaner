@@ -1,0 +1,12 @@
+#!/bin/bash
+
+PROJ=`sh find_files_in_project.sh`
+FILES_TO_LOOK=`find ./resources -name '*.png' | grep -v 'Default' | grep -v "@2x"`
+
+for file in $FILES_TO_LOOK
+do
+    name=`basename $file`
+    if ! grep -qhs "$name" ./app; then
+        echo "$file"
+    fi
+done
