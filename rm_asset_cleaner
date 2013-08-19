@@ -1,12 +1,16 @@
 #!/bin/bash
 
-PROJ=`sh find_files_in_project.sh`
-FILES_TO_LOOK=`find ./resources -name '*.png' | grep -v 'Default' | grep -v "@2x"`
+function files_that_are_no_reference_in_app(){
+    FILES_TO_LOOK=`find ./resources -name '*png' | grep -v 'Default' | grep -v '@2x'`
 
-for file in $FILES_TO_LOOK
-do
-    name=`basename $file`
-    if ! grep -qhs "$name" ./app; then
+    for file in $FILES_TO_LOOK
+    do
+      name=`basename $file`
+      if ! grep -qhsr "$name" ./app; then
         echo "$file"
-    fi
-done
+      fi
+    done
+}
+
+
+files_that_are_no_reference_in_app
